@@ -33,6 +33,8 @@ const UPSCTracker = () => {
     return saved ? JSON.parse(saved) : { target: 8, current: 0 };
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  
   const [newCategory, setNewCategory] = useState({ name: '', target: 5 });
   const [streak, setStreak] = useState(() => {
     const saved = localStorage.getItem('upscStreak');
