@@ -67,6 +67,7 @@ const UPSCTracker = () => {
     setCategories(categories.filter((_, idx) => idx !== index));
   };
 
+  // Fixed: Explicitly typed the 'index' and 'delta' parameters as 'number'
   const updateCount = (index: number, delta: number) => {
     const newCategories = [...categories];
     newCategories[index].current = Math.max(0, newCategories[index].current + delta);
