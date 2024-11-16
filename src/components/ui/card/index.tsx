@@ -1,7 +1,12 @@
 // src/components/ui/card/index.tsx
 import React from 'react';
 
-export const Card = ({ children, className = '', ...props }) => {
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const Card: React.FC<CardProps> = ({ children, className = '', ...props }) => {
   return (
     <div className={`rounded-lg shadow-lg p-6 ${className}`} {...props}>
       {children}
@@ -9,14 +14,14 @@ export const Card = ({ children, className = '', ...props }) => {
   );
 };
 
-export const CardHeader = ({ children }) => {
+export const CardHeader: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <div className="mb-4">{children}</div>;
 };
 
-export const CardTitle = ({ children }) => {
+export const CardTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <h2 className="text-xl font-bold">{children}</h2>;
 };
 
-export const CardContent = ({ children }) => {
+export const CardContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <div>{children}</div>;
 };
