@@ -37,8 +37,8 @@ const UPSCTracker = () => {
   
   const [newCategory, setNewCategory] = useState({ name: '', target: 5 });
   const [streak, setStreak] = useState(() => {
-    const saved = localStorage.getItem('upscStreak');
-    return saved ? JSON.parse(saved) : 0;
+    //const saved = localStorage.getItem('upscStreak');
+   //return saved ? JSON.parse(saved) : 0;
   });
 
   const [friends, setFriends] = useState([]);
