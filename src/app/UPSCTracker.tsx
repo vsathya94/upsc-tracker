@@ -6,11 +6,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Plus, Minus, Award, BookOpen, Trash } from 'lucide-react';
 
+interface Category {
+  name: string;
+  target: number;
+  current: number;
+}
+
 const UPSCTracker = () => {
   const [userName, setUserName] = useState('');
   const [entryDate, setEntryDate] = useState(() => new Date().toISOString().split('T')[0]);
 
-  const [categories, setCategories] = useState(() => {
+  const [categories, setCategories] = useState<Category[]>(() => {
     const saved = localStorage.getItem('upscCategories');
     return saved ? JSON.parse(saved) : [
       { name: 'Static MCQs', target: 5, current: 0 },
@@ -62,9 +68,9 @@ const UPSCTracker = () => {
     }
   };
 
-  // Fixed: Explicitly typed the 'index' parameter as 'number'
+  // Fixed: Explicitly typed the 'index' parameter as 'number' and the '_' parameter as 'Category'
   const handleDeleteCategory = (index: number) => {
-    setCategories(categories.filter((_, idx) => idx !== index));
+    setCategories(categories.filter((_: Category, idx: number) => idx !== index));
   };
 
   // Fixed: Explicitly typed the 'index' and 'delta' parameters as 'number'
