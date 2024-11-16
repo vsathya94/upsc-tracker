@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; // Removed 'useEffect' because it's not used
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Plus, Minus, Award, BookOpen, Trash } from 'lucide-react';
+import { Plus, Minus, BookOpen, Trash } from 'lucide-react'; // Removed 'Award' because it's not used
 
 // Commented out the Category interface for now
 // interface Category {
