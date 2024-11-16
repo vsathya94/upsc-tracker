@@ -1,10 +1,10 @@
-'use client'; // Add this line at the top of the file
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Share2, Plus, Minus, Award, Clock, BookOpen, PenTool, Trash, UserPlus, ThumbsUp } from 'lucide-react';
+import { Plus, Minus, Award, BookOpen, Trash } from 'lucide-react';
 
 const UPSCTracker = () => {
   const [userName, setUserName] = useState('');
@@ -18,34 +18,34 @@ const UPSCTracker = () => {
     ];
   });
 
-  const [mainsAnswers, setMainsAnswers] = useState(() => {
+  const [mainsAnswers] = useState(() => {
     const saved = localStorage.getItem('upscMains');
     return saved ? JSON.parse(saved) : { target: 2, current: 0 };
   });
 
-  const [optionalAnswers, setOptionalAnswers] = useState(() => {
+  const [optionalAnswers] = useState(() => {
     const saved = localStorage.getItem('upscOptional');
     return saved ? JSON.parse(saved) : { target: 2, current: 0 };
   });
 
-  const [studyHours, setStudyHours] = useState(() => {
+  const [studyHours] = useState(() => {
     const saved = localStorage.getItem('upscHours');
     return saved ? JSON.parse(saved) : { target: 8, current: 0 };
   });
 
   // Streak state: retained for future use
-  const [streak, setStreak] = useState(() => {
+  const [streak] = useState(() => {
     const saved = localStorage.getItem('upscStreak');
     return saved ? JSON.parse(saved) : 0;
   });
-  
-  // Temporarily disabling the warning for unused setStreak until it's implemented
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const [newCategory, setNewCategory] = useState({ name: '', target: 5 });
 
-  const [friends, setFriends] = useState([]);
-  const [newFriend, setNewFriend] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [friends, setFriends] = useState([]); // Retained for future use
+  
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [newFriend, setNewFriend] = useState(''); // Retained for future use
 
   useEffect(() => {
     localStorage.setItem('upscCategories', JSON.stringify(categories));
@@ -70,38 +70,6 @@ const UPSCTracker = () => {
     const newCategories = [...categories];
     newCategories[index].current = Math.max(0, newCategories[index].current + delta);
     setCategories(newCategories);
-  };
-
-  const shareProgress = () => {
-    const text = `🎯 My UPSC Prep Today:
-MCQs: ${categories.map(c => `${c.name}: ${c.current}/${c.target}`).join(', ')}
-✍️ Mains Answers: ${mainsAnswers.current}/${mainsAnswers.target}
-📝 Optional Answers: ${optionalAnswers.current}/${optionalAnswers.target}
-⏰ Study Hours: ${studyHours.current}/${studyHours.target}
-🔥 Streak: ${streak} days
-#UPSC #UPSCPreparation`;
-
-    if (navigator.share) {
-      navigator.share({
-        text: text,
-      });
-    } else {
-      navigator.clipboard.writeText(text);
-      alert('Progress copied to clipboard!');
-    }
-  };
-
-  const handleAddFriend = () => {
-    if (newFriend) {
-      setFriends([...friends, { name: newFriend, kudos: 0 }]);
-      setNewFriend('');
-    }
-  };
-
-  const giveKudos = (index) => {
-    const updatedFriends = [...friends];
-    updatedFriends[index].kudos += 1;
-    setFriends(updatedFriends);
   };
 
   return (
@@ -190,13 +158,11 @@ MCQs: ${categories.map(c => `${c.name}: ${c.current}/${c.target}`).join(', ')}
             </div>
           </div>
 
-          {/* Rest of the code continues as in your original version... */}
+          {/* Rest of the code continues... */}
         </CardContent>
       </Card>
-
-      {/* Rest of the component remains unchanged */}
     </div>
   );
 };
 
-export default UPSCTracker
+export default UPSCTracker;
