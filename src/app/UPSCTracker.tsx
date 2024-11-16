@@ -62,11 +62,12 @@ const UPSCTracker = () => {
     }
   };
 
-  const handleDeleteCategory = (index) => {
+  // Fixed: Explicitly typed the 'index' parameter as 'number'
+  const handleDeleteCategory = (index: number) => {
     setCategories(categories.filter((_, idx) => idx !== index));
   };
 
-  const updateCount = (index, delta) => {
+  const updateCount = (index: number, delta: number) => {
     const newCategories = [...categories];
     newCategories[index].current = Math.max(0, newCategories[index].current + delta);
     setCategories(newCategories);
