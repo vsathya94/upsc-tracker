@@ -1,26 +1,21 @@
-// File: app/page.js
+// File: app/page.tsx
 
-import Image from "next/image";
-import UPSCTracker from './UPSCTracker'; // Adjust this import if the file is in a different location
-console.log('UPSCTracker:', UPSCTracker); // Should print a function, not undefined or an object
+import React from 'react';
+import UPSCTracker from './UPSCTracker'; // Ensure the path is correct
 
 export default function Home() {
   return (
     <div className="min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <header className="text-center mb-12">
-        <Image
-          className="dark:invert mx-auto"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+        {/* Title instead of Image */}
+        <h1 className="text-4xl font-bold mb-4">UPSC Prep Tracker</h1>
       </header>
+      
       {/* UPSC Tracker Component */}
       <main>
         <UPSCTracker />
       </main>
+      
       <footer className="text-center mt-12">
         <p className="text-sm">Powered by Next.js & Vercel</p>
         <a
